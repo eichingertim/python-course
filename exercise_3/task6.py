@@ -5,9 +5,9 @@ print(A)
 print(len(A))
 print(len(A[0]))
 print(len(A[0][0]))
-print(len(A[0][0][0]))
+# print(len(A[0][0][0]))
 
-A[0][0] = 1
+A[0][0][0] = 1
 print(A)
 
 # Es zeigt immer auf die gleiche Referenz. 

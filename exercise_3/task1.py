@@ -11,7 +11,7 @@ def read_in_variable(text):
         except ValueError:
             print("This was not a number. Try again!")
 
-def calculate_zero_places(a, b, c, is_complex):
+def calculate_zero_points(a, b, c, is_complex):
     x1, x2 = [0,0]
     if is_complex:
         x1 = ((-b) + cmath.sqrt(b*b-4*a*c))/(2*a)
@@ -25,11 +25,22 @@ a = read_in_variable("Enter a digit for a: ")
 b = read_in_variable("Enter a digit for b: ")
 c = read_in_variable("Enter a digit for c: ")
 
-zp = calculate_zero_places(a, b, c, False)
-zpc = calculate_zero_places(a, b, c, True)
+try:
+    zp = calculate_zero_points(a, b, c, False)
+    print('Relle Zahlen x1: {:.3f}, x2: {:.3f}'.format(zp[0], zp[1]))
+except ValueError:
+    print("Keine Reelen Nullstellen vorhanden")
 
-print('Relle Zahlen x1: {:.3f}, x2: {:.3f}'.format(zp[0], zp[1]))
-print('Komplexe Zahlen x1: {:.3f}, x2: {:.3f}'.format(zpc[0], zpc[1]))
+try:
+    zpc = calculate_zero_points(a, b, c, True)
+    print('Komplexe Zahlen x1: {:.3f}, x2: {:.3f}'.format(zpc[0], zpc[1]))
+except ValueError:
+    print("Keine Komplexen Nullstellen vorhanden")
+
+
+
+
+
 
 
 
