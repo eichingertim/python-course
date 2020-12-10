@@ -1,7 +1,6 @@
 def check_sum(num):
-    num_str = str(num)
     checksum = 0
-    for i in num_str:
+    for i in str(num):
         checksum += int(i)
     return checksum
 

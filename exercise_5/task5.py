@@ -11,4 +11,4 @@ def integrate(func, start, stop, N):
     return area
 
 
-print(integrate(math.exp, 0, 1, 10000))
+print(f"{integrate(math.exp, 0, 1, 10000):.4}")
