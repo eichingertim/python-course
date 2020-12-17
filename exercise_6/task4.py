@@ -10,11 +10,10 @@ def recursive_search(searchTerm, data):
         if (middle == searchTerm):
             return True
         elif (searchTerm > middle):
-            return recursive_search(searchTerm, data[:middleIndex])
-        else:
             return recursive_search(searchTerm, data[middleIndex:])
+        else:
+            return recursive_search(searchTerm, data[:middleIndex])
 
-data = [1, 5, 6, 7, 8, 50, 96, 666, 1337, 2112]
-searchTerm = 42
+data = [1, 5, 6, 7, 8, 42, 96, 666, 1337, 2112]
 
-print(recursive_search(42, data))
+print(recursive_search(2112, data))
