@@ -1,6 +1,6 @@
 class Gegenstand:
 
-    def __init__(self, name, prop, points):
+    def __init__(self, name, category, points):
         self.name = name
-        self.prop = prop
+        self.category = category
         self.points = points
