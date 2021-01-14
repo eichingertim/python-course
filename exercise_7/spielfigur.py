@@ -17,26 +17,33 @@ class Spielfigur:
         self.progress = 0
 
     def bearbeitePruefung(self, pruefung, gegenstaende):
-        decision = input(pruefung.TextEntscheidung)
+        decision = input(pruefung.TextEntscheidung + ': ')
         if decision.lower() == 'ja':
             print(pruefung.TextJa)
             sum = self.rollTheDice(self.getDiceNum(pruefung.AufgabeJaKategorie))
 
             if (sum > pruefung.AufgabeJaKosten):
                 self.backpack.append(gegenstaende[random.randrange(0, len(gegenstaende))])
+                self.progress += 1
+                print('You got it!')
             else:
                 self.life_points -= 1
+                print('-1 lifepoints')
         else:
             print(pruefung.TextNein)
             sum = self.rollTheDice(self.getDiceNum(pruefung.AufgabeNeinKategorie))
 
-            if (pruefung.TextNeinKategorie == "expose"):
+            if (pruefung.AufgabeNeinKategorie == "expose"):
                 self.expose = True
+                print('You must expose')
             else:
                 if (sum > pruefung.AufgabeNeinKosten):
                     self.backpack.append(gegenstaende[random.randrange(0, len(gegenstaende))])
+                    self.progress += 1
+                    print('You got it!')
                 else:
                     self.life_points -= 1
+                    print('-1 lifepoints')
 
 
     def rollTheDice(self, num):
@@ -72,6 +79,6 @@ class Spielfigur:
         '''.format(self.name, self.progress, self.life_points, self.strength_points, self.intelligence_points, self.speed_points, self.charisma_points)
 
         for gegenstand in self.backpack:
-            string += '* {0} ({1} +{2}'.format(gegenstand.name, gegenstand.prop, gegenstand.points)
+            string += '* {0} ({1} +{2})'.format(gegenstand.name, gegenstand.category, gegenstand.points)
 
         return string
